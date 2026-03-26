@@ -1,6 +1,6 @@
-## 📊 Descripción General
+## Descripción General
 
-Este proyecto nace de la observación y el análisis profundo de un conjunto de datos históricos compuesto por más de 11,900 sorteos.
+Este proyecto nace de la observación y el análisis profundo de un conjunto de datos históricos compuesto por más de 11,900 sorteos del sorteo Chispazo de la Lotería Nacional.
 
 El objetivo fue validar empíricamente la existencia de patrones ocultos en las combinaciones ganadoras y, posteriormente, desarrollar un algoritmo en Python capaz de generar nuevas jugadas altamente probables utilizando "fuerza bruta inteligente" y filtros estadísticos estrictos.
 
@@ -12,17 +12,17 @@ Se utilizó Python (junto con la librería `pandas`) para ingestar y analizar el
 
 ---
 
-## Hallazgos Estadísticos (The "Hints")
+## Hallazgos Estadísticos 
 
 Tras analizar las miles de filas de resultados, la estadística confirmó la existencia de patrones dominantes fuertemente marcados:
 
-### 1. El Efecto de Arrastre (Repetición)
+### 1. El Efecto de Arrastre
 El **66.21%** de los sorteos contiene al menos un número que resultó ganador en el sorteo inmediatamente anterior. Es decir, 2 de cada 3 sorteos arrastran un número del pasado.
 
 ### 2. La Ley del Gemelo (Mismo último dígito)
 En el **56.81%** de las combinaciones ganadoras, existen al menos dos números que terminan en el mismo dígito (ejemplo: 7 y 17, ó 14 y 24).
 
-### 3. El Imán Consecutivo (Diferencias o Deltas)
+### 3. El Imán Consecutivo (Diferencias)
 - Al analizar las diferencias entre casillas (D-P1-P2, etc.), la diferencia más común es el **1**.
 - En el **56.83%** de los sorteos aparece al menos un par de números consecutivos.
 - El "rango" (la diferencia entre el número más grande y el más pequeño de la serie) promedia consistentemente entre **19 y 21**.
