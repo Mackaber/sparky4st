@@ -22,6 +22,19 @@ PRIMOS = {2, 3, 5, 7, 11, 13, 17, 19, 23}
 NUMEROS_CALIENTES = {10, 17, 21, 18, 23}
 NUMEROS_FRIOS = {13, 3, 27, 26, 28}
 
+MENSAJES_PROGRESO = [
+    "Iniciando motor matemático...",
+    "Aplicando Regla del 66% (Extrayendo del sorteo anterior)...",
+    "Forzando patrón de diferencias...",
+    "Calculando emparejamiento de último dígito...",
+    "Pesando Números Calientes y descartando Fríos...",
+    "Ajustando centro de gravedad...",
+    "Equilibrando balanza de Pares e Impares (3:2)...",
+    "Validando estructura estricta de Primos/Compuestos...",
+    "Descartando combinaciones estadísticamente débiles...",
+    "¡Alineación probabilística completada con éxito!",
+]
+
 def es_primo(n):
     return n in PRIMOS
 
@@ -93,18 +106,7 @@ def generar_combinacion(sorteo_anterior, opcion_primos):
 
 
 def barra_de_progreso_emocionante(segundos=10):
-    mensajes = [
-        "Iniciando motor matemático...",
-        "Aplicando Regla del 66% (Extrayendo del sorteo anterior)...",
-        "Forzando patrón de diferencias...",
-        "Calculando emparejamiento de último dígito...",
-        "Pesando Números Calientes y descartando Fríos...",
-        "Ajustando centro de gravedad...",
-        "Equilibrando balanza de Pares e Impares (3:2)...",
-        "Validando estructura estricta de Primos/Compuestos...",
-        "Descartando combinaciones estadísticamente débiles...",
-        "¡Alineación probabilística completada con éxito!"
-    ]
+    mensajes = MENSAJES_PROGRESO
     
     pasos = 100
     tiempo_por_paso = segundos / pasos
@@ -130,9 +132,10 @@ def barra_de_progreso_emocionante(segundos=10):
         time.sleep(tiempo_por_paso)
     print("\n")
 
-# --- INTERFAZ DEL PROGRAMA ---
-print(f"{CYAN}=================================================={RESET}")
-print(f"""{YELLOW}
+def main():
+    # --- INTERFAZ DEL PROGRAMA ---
+    print(f"{CYAN}=================================================={RESET}")
+    print(f"""{YELLOW}
           .
          / \\
       --( * )--
@@ -145,29 +148,37 @@ print(f"""{YELLOW}
    |____/| .__/ \__,_|_|   |_|\_\\__, |  |_| 
          |_|                     |___/       
 {RESET}""")
-print(f"{CYAN}=================================================={RESET}\n")
+    print(f"{CYAN}=================================================={RESET}\n")
 
-# 1. Pedir el sorteo anterior
-print(f"{BOLD}{MAGENTA}Paso 1:{RESET} Datos Base")
-entrada = input(f"Ingresa los 5 números del {YELLOW}SORTEO ANTERIOR{RESET} separados por un espacio (Ej: 4 12 17 21 28):\n> ")
-sorteo_anterior = [int(x) for x in entrada.strip().split()]
+    # 1. Pedir el sorteo anterior
+    print(f"{BOLD}{MAGENTA}Paso 1:{RESET} Datos Base")
+    entrada = input(
+        f"Ingresa los 5 números del {YELLOW}SORTEO ANTERIOR{RESET} separados por un espacio (Ej: 4 12 17 21 28):\n> "
+    )
+    sorteo_anterior = [int(x) for x in entrada.strip().split()]
 
-# 2. Pedir la estructura de Primos/Compuestos
-print(f"\n{BOLD}{MAGENTA}Paso 2:{RESET} Selecciona la arquitectura de la jugada")
-print(f"{GREEN}1){RESET} 2 Primos y 3 Compuestos {YELLOW}(Recomendada: 29.7% prob.){RESET}")
-print(f"{GREEN}2){RESET} 1 Primo y 4 Compuestos  {YELLOW}(Recomendada: 27.6% prob.){RESET}")
-opcion = int(input(f"> Opción {CYAN}(1 o 2){RESET}: "))
+    # 2. Pedir la estructura de Primos/Compuestos
+    print(f"\n{BOLD}{MAGENTA}Paso 2:{RESET} Selecciona la arquitectura de la jugada")
+    print(f"{GREEN}1){RESET} 2 Primos y 3 Compuestos {YELLOW}(Recomendada: 29.7% prob.){RESET}")
+    print(f"{GREEN}2){RESET} 1 Primo y 4 Compuestos  {YELLOW}(Recomendada: 27.6% prob.){RESET}")
+    opcion = int(input(f"> Opción {CYAN}(1 o 2){RESET}: "))
 
-# Ocultamos la generación en background
-combinacion_final, iteraciones = generar_combinacion(sorteo_anterior, opcion)
+    # Ocultamos la generación en background
+    combinacion_final, iteraciones = generar_combinacion(sorteo_anterior, opcion)
 
-# 3. La barra de progreso de 10 segundos (se puede modificar a tu antojo)
-barra_de_progreso_emocionante(10)
+    # 3. La barra de progreso de 10 segundos (se puede modificar a tu antojo)
+    barra_de_progreso_emocionante(10)
 
-# 4. Mostrar resultados
-print(f"{YELLOW}=================================================={RESET}")
-print(f"{BOLD}{GREEN}✓ ¡COMBINACIÓN ENCONTRADA Y VERIFICADA!{RESET}")
-print(f"Combinación sugerida: {CYAN}{BOLD}{combinacion_final}{RESET}")
-print(f"Centro de gravedad (Suma): {MAGENTA}{sum(combinacion_final)}{RESET}")
-print(f"Fuerza bruta utilizada: {RED}{iteraciones} iteraciones{RESET} para hallar el patrón perfecto.")
-print(f"{YELLOW}=================================================={RESET}\n")
+    # 4. Mostrar resultados
+    print(f"{YELLOW}=================================================={RESET}")
+    print(f"{BOLD}{GREEN}✓ ¡COMBINACIÓN ENCONTRADA Y VERIFICADA!{RESET}")
+    print(f"Combinación sugerida: {CYAN}{BOLD}{combinacion_final}{RESET}")
+    print(f"Centro de gravedad (Suma): {MAGENTA}{sum(combinacion_final)}{RESET}")
+    print(
+        f"Fuerza bruta utilizada: {RED}{iteraciones} iteraciones{RESET} para hallar el patrón perfecto."
+    )
+    print(f"{YELLOW}=================================================={RESET}\n")
+
+
+if __name__ == "__main__":
+    main()
